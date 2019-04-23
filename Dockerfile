@@ -9,7 +9,7 @@ MAINTAINER 3846masa
 
 ENV PATH /usr/local/texlive/2018/bin/x86_64-linuxmusl:$PATH
 
-RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
+RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev git && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2018/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
@@ -29,6 +29,7 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
     apk --no-cache del xz tar
 
 RUN apk --no-cache add bash
+RUN apk --no-cache add ca-certificates
 
 WORKDIR /workdir
 
